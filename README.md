@@ -5,28 +5,21 @@ This pipeline is a command-line tool that loads a CSV dataset, validates it, cle
 ## Example
 
 ```bash
-python pipeline.py --input fixtures/sample_data.csv --output output/clean.csv --config config/config.yaml --verbose
+python pipeline.py --input fixtures/sample_data.csv --output cleaned_data.csv --config config/config.yaml
 ```
 
 Output:
 
-```text
-13:50:32 DEBUG    __main__ — Arguments parsed: input=fixtures/sample_data.csv, config=config/config.yaml, output=output/clean.csv
-13:50:32 INFO     src.utils — Input file validated: fixtures/sample_data.csv
-13:50:32 INFO     src.utils — Input file validated: config/config.yaml
-13:50:32 INFO     src.data_loaders — Loaded CSV file: fixtures/sample_data.csv (100 rows)
-13:50:32 INFO     src.data_loaders — Loaded YAML file: config/config.yaml
-13:50:32 WARNING  src.data_validator — Invalid numeric value in rating at row 14: 'excellent'
-13:50:32 WARNING  src.data_validator — Invalid numeric value in rating at row 89: 'bad'
-13:50:32 WARNING  src.data_validator — Removed 2 rows with invalid numeric values in rating
-13:50:32 DEBUG    src.data_validator — Validation: 100 -> 98 rows (valid=98, removed=2)
-13:50:32 INFO     __main__ — Validation complete: 100 -> 98 rows
-13:50:32 DEBUG    src.data_processor — remove_duplicates: 98 -> 96 rows (removed 2)
-13:50:32 DEBUG    src.data_processor — handle_missing: 96 -> 94 rows (removed 2)
-13:50:32 DEBUG    src.data_processor — rating: method=iqr, threshold=1.5, removed=2
-13:50:32 INFO     __main__ — Processing complete: 98 -> 92 rows
-13:50:32 DEBUG    src.data_output — Saved 92 rows to output/clean.csv
-13:50:32 INFO     __main__ — Saved cleaned data to output/clean.csv
+11:23:26 INFO     src.utils — Input file validated: fixtures/sample_data.csv
+11:23:26 INFO     src.utils — Input file validated: config/config.yaml
+11:23:26 INFO     src.data_loaders — Loaded CSV file: fixtures\sample_data.csv (100 rows)
+11:23:26 INFO     src.data_loaders — Loaded YAML file: config\config.yaml
+11:23:26 WARNING  src.data_validator — Invalid numeric value in rating at row 94: not_available
+11:23:26 WARNING  src.data_validator — Invalid numeric value in rating at row 95: error
+11:23:26 WARNING  src.data_validator — Removed 2 rows with invalid numeric values in rating
+11:23:26 INFO     __main__ — Validation complete: 100 -> 98 rows
+11:23:26 INFO     __main__ — Processing complete: 98 -> 92 rows
+11:23:26 INFO     __main__ — Saved cleaned data to cleaned_data.csv
 
 Cleaning report:
 {
