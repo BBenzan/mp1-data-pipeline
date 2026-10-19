@@ -61,7 +61,7 @@ def main():
         data = load_data(args.input)
         config = load_data(args.config)
     except ValueError:
-        logger.ERROR("Failed to load data or configuration.")
+        logger.error("Failed to load data or configuration.")
         sys.exit(1)
 
     # Validate DataFrame
